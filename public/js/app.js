@@ -24,11 +24,11 @@ function populateArticles(data) {
         return $("#articles").append(`
           <div class="row">
             <div class="col s12 m12">
-              <div class="card horizontal">
+              <div class="card horizontal blue-grey darken-1">
                 <div class="card-stacked">
-                  <div class="card-content">
+                  <div class="card-content white-text">
                   <p>${x.title}</p>
-                  <button data-id="${x._id}" data-saved="${x.isSaved}" class="btn-floating halfway-fab waves-effect waves-light red save-btn">Save Article</button>
+                  <button data-id="${x._id}" data-saved="${x.isSaved}" class="btn-floating halfway-fab waves-effect waves-light red save-btn">Save</button>
                   </div>
                   <div class="card-action">
                   <a href="${x.link}" target="_blank">${x.link}</a>
@@ -44,8 +44,11 @@ function populateArticles(data) {
 };
 
 
-getArticles();
 
+$(document).ready(function(){
+  $('.parallax').parallax();
+  getArticles();
+});
 $(document).on('click', '.save-btn', (event) => {
   let isSaved;
   if (event.target.dataset.saved === "false") {
