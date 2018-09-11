@@ -21,7 +21,9 @@ app.engine(
 	})
 );
 
-mongoose.connect("mongodb://localhost/newsscrapper");
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsscrapper";
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 app.get('/', (req, res) => {
   res.render('index');
